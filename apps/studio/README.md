@@ -1,49 +1,36 @@
-# Welcome to Remix Auth TOTP - Starter Example
+# Welcome to Remix + Vite!
 
-This repository has been created with the intent to provide a simple example of how to use Remix Auth TOTP. This example uses Prisma ORM and SQLite to store and handle the authentication flow.
+📖 See the [Remix docs](https://remix.run/docs) and the [Remix Vite docs](https://remix.run/docs/en/main/guides/vite) for details on supported features.
 
-## Getting Started
+## Development
 
-1. Clone the repository and install its dependencies:
+Run the Vite dev server:
 
-```sh
-npm install
-```
-
-
-2. Run Prisma migrations:
-
-```sh
-npx prisma migrate dev --name init
-```
-
-3. Get required `.env` variables:
-
-In order to successfully implement `remix-auth-totp` you will require the following `.env` variables:
-
-```sh
-ENCRYPTION_SECRET=""
-RESEND_API_KEY=""
-```
-
-Let's break down how to obtain these variables:
-
-For `ENCRYPTION_SECRET` a random 64-character hexadecimal string is required. An example of a random 64-character hexadecimal string is `928F416BAFC49B969E62052F00450B6E974B03E86DC6984D1FA787B7EA533227`.
-- You can use a site like https://www.grc.com/passwords.htm to generate a strong secret.
-
-For `RESEND_API_KEY` you can visit [Resend](https://resend.com) and create a free account in order to get your API key [here](https://resend.com/api-keys).
-
-> [!NOTE]
-> Remember to replace the current `.env.example` file with your own `.env` file.
-
-4. Run the server:
-
-```sh
+```shellscript
 npm run dev
 ```
 
-And you're ready to go! 🎉
+## Deployment
 
-## Contributing
+First, build your app for production:
 
-If you want to share your own example, feel free to open a PR into the [main repository](https://github.com/dev-xo/remix-auth-totp).
+```sh
+npm run build
+```
+
+Then run the app in production mode:
+
+```sh
+npm start
+```
+
+Now you'll need to pick a host to deploy it to.
+
+### DIY
+
+If you're familiar with deploying Node applications, the built-in Remix app server is production-ready.
+
+Make sure to deploy the output of `npm run build`
+
+- `build/server`
+- `build/client`
