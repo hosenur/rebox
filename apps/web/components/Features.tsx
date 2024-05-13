@@ -1,4 +1,4 @@
-import { Clock, Code, Command, Cube, Database, Feather } from "@phosphor-icons/react/dist/ssr"
+import { Clock, Code, CodeSimple, Command, Cube, Database, Download, Feather, Heartbeat } from "@phosphor-icons/react/dist/ssr"
 import { Badge } from "./ui/badge"
 
 interface Feature {
@@ -16,35 +16,35 @@ const FeaturesData: Feature[] = [
         name: 'Databases',
         description:
             'Rebox supports multiple databases like MySQL, PostgreSQL, Redis and MongoDB.',
-        icon: <Database size={iconSize} />,
+        icon: <Database weight="duotone" size={iconSize} />,
     },
     {
         id: 2,
         name: 'Apps',
         description:
             'Host any web application, Next.js, React, Nodejs and more with Rebox.',
-        icon: <Code size={iconSize} />,
+        icon: <CodeSimple weight="duotone" size={iconSize} />,
     },
     {
         id: 3,
         name: 'Docker Images',
         description:
             'Deploy your docker images with ease, Rebox supports Docker images.',
-        icon: <Cube size={iconSize} />,
+        icon: <Cube weight="duotone" size={iconSize} />,
     },
     {
         id: 4,
-        name: 'Responsive',
+        name: 'Monitoring',
         description:
-            'SyntaxUI components are designed to be responsive and work seamlessly across devices.',
-        icon: <Feather size={iconSize} />,
+            'Rebox comes with built-in monitoring, monitor your applications with ease.',
+        icon: <Heartbeat weight="duotone" size={iconSize} />,
     },
     {
         id: 5,
-        name: 'Accessible',
+        name: 'Backups',
         description:
-            'SyntaxUI prioritizes accessibility, ensuring that your components are usable by everyone.',
-        icon: <Command size={iconSize} />,
+            'Rebox automatically takes backups of your data, so you never lose your data.',
+        icon: <Download weight="duotone" size={iconSize} />,
     },
     {
         id: 6,
@@ -55,7 +55,7 @@ const FeaturesData: Feature[] = [
     },
 ]
 
-export const FeaturesGrid = () => {
+export const Features = () => {
     return (
         <div>
             <div className="mt-8 grid w-full grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-3">
@@ -89,7 +89,7 @@ const FeaturesWithHeading = () => {
                 SyntaxUI is a free to use, customizable, and highly customizable UI
                 component library.
             </p>
-            <FeaturesGrid />
+            <Features />
         </div>
     )
 }

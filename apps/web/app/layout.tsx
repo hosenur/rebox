@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import { ThemeProvider } from 'next-themes';
 import "./globals.css";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 
 export const metadata: Metadata = {
@@ -16,9 +17,11 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className="font-satoshi dark">
-        <ThemeProvider attribute="class">
+        <Header />
+        <main className="pt-[80px] min-h-screen ">
           {children}
-        </ThemeProvider>
+        </main>
+        <Footer />
       </body>
     </html>
   );
