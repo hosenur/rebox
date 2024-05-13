@@ -1,4 +1,4 @@
-import { Clock, Code, CodeSimple, Command, Cube, Database, Download, Feather, Heartbeat } from "@phosphor-icons/react/dist/ssr"
+import { Clock, Code, CodeSimple, Command, Cube, Database, Download, Feather, GitBranch, Heartbeat } from "@phosphor-icons/react/dist/ssr"
 import { Badge } from "./ui/badge"
 
 interface Feature {
@@ -48,10 +48,10 @@ const FeaturesData: Feature[] = [
     },
     {
         id: 6,
-        name: 'Regularly Updated',
+        name: 'Monorepo Support',
         description:
-            'SyntaxUI is actively maintained and regularly updated with new features and improvements.',
-        icon: <Clock size={iconSize} />,
+            'Rebox supports monorepos out of the box, deploy multiple applications with ease.',
+        icon: <GitBranch weight="duotone" size={iconSize} />,
     },
 ]
 

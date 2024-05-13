@@ -5,7 +5,7 @@ import Marquee from 'react-fast-marquee'
 export default function Footer() {
     return (
         <footer className='mt-20'>
-            <Marquee autoFill className='overflow-visible -z-10 -mb-6 md:-mb-9'>
+            <Marquee autoFill className='overflow-visible -z-10 -mb-5 md:-mb-9'>
                 <h1 className='md:text-8xl text-6xl font-bold mx-5'>rebox.dev</h1>
             </Marquee>
             <div className='glass  z-10 p-5'>

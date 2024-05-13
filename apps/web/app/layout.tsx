@@ -16,7 +16,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className="font-satoshi dark">
+      <body className="font-outfit dark">
         <Header />
         <main className="pt-[80px] min-h-screen ">
           {children}
