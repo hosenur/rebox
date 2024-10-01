@@ -12,7 +12,7 @@ export default function Signup() {
         await authClient.signIn.social({
             provider: 'github'
         })
- 
+
     }
 
     return (
