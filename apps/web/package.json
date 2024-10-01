@@ -11,6 +11,8 @@
     "typecheck": "tsc"
   },
   "dependencies": {
+    "@fontsource/geist-mono": "^5.1.0",
+    "@octokit/rest": "^21.0.2",
     "@prisma/client": "5.20.0",
     "@radix-ui/react-slot": "^1.1.0",
     "@remix-run/node": "^2.12.1",

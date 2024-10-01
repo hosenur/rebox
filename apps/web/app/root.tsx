@@ -5,22 +5,18 @@ import {
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react";
-import type { LinksFunction } from "@remix-run/node";
 
 import "./tailwind.css";
+import '@fontsource/geist-mono/100.css';
+import '@fontsource/geist-mono/200.css';
+import '@fontsource/geist-mono/300.css';
+import '@fontsource/geist-mono/400.css';
+import '@fontsource/geist-mono/500.css';
+import '@fontsource/geist-mono/600.css';
+import '@fontsource/geist-mono/700.css';
+import '@fontsource/geist-mono/800.css';
+import '@fontsource/geist-mono/900.css';
 
-export const links: LinksFunction = () => [
-  { rel: "preconnect", href: "https://fonts.googleapis.com" },
-  {
-    rel: "preconnect",
-    href: "https://fonts.gstatic.com",
-    crossOrigin: "anonymous",
-  },
-  {
-    rel: "stylesheet",
-    href: "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap",
-  },
-];
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (

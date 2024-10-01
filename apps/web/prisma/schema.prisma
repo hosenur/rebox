@@ -38,7 +38,7 @@ model session {
 
 model account {
   id           String    @id
-  accountId    Int
+  accountId    String
   providerId   String
   userId       String
   User         user      @relation(fields: [userId], references: [id], onDelete: Cascade)
