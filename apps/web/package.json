@@ -1,5 +1,5 @@
 {
-  "name": "web",
+  "name": "@rebox/web",
   "private": true,
   "sideEffects": false,
   "type": "module",
