@@ -11,9 +11,9 @@
     "typecheck": "tsc"
   },
   "dependencies": {
+    "@rebox/db": "workspace:*",
     "@fontsource/geist-mono": "^5.1.0",
     "@octokit/rest": "^21.0.2",
-    "@prisma/client": "5.20.0",
     "@radix-ui/react-dialog": "^1.1.1",
     "@radix-ui/react-popover": "^1.1.1",
     "@radix-ui/react-slot": "^1.1.0",

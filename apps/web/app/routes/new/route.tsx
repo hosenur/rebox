@@ -4,7 +4,8 @@ import { Form, useLoaderData } from '@remix-run/react';
 import React from 'react';
 import { Button } from "~/components/ui/button";
 import { Input } from "~/components/ui/input";
-import { auth, prisma } from '~/lib/auth.server';
+import { auth } from '~/lib/auth.server';
+import { prisma } from "~/lib/prisma";
 import { Repo } from '~/types';
 export async function action({ request }: ActionFunctionArgs) {
     const body = await request.formData();
