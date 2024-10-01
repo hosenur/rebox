@@ -1,0 +1,22 @@
+{
+  "name": "@rebox/db",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "db:generate": "npx prisma generate",
+    "db:push": "npx prisma db push --skip-generate"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "devDependencies": {
+    "prisma": "5.20.0"
+  },
+  "dependencies": {
+    "@prisma/client": "5.20.0"
+  }
+}

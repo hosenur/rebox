@@ -60,8 +60,11 @@ model queue {
 enum status {
   pending
   cloning
+  cloned
   building
+  built
   deploying
+  deployed
   running
   completed
   failed
