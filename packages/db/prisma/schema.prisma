@@ -23,6 +23,7 @@ model user {
   updatedAt     DateTime
   session       session[]
   account       account[]
+  project       project[]
 
   @@unique([email])
 }
@@ -51,7 +52,8 @@ model account {
 
 model queue {
   id        String   @id @default(uuid())
-  repo      String
+  project   project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  projectId String
   status    status   @default(pending)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -68,4 +70,17 @@ enum status {
   running
   completed
   failed
+}
+
+model project {
+  id        String   @id @default(uuid())
+  name      String   @unique
+  repoURL   String
+  repoName  String
+  userId    String
+  User      user     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  status    status   @default(pending)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  queue     queue[]
 }
