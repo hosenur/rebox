@@ -1,9 +1,13 @@
-"use client"
-import { ChevronDownIcon, MagnifyingGlassIcon, ShoppingBagIcon } from "@heroicons/react/24/outline"
-import { Avatar } from "@/components/ui/avatar"
-import { Button } from "@/components/ui/button"
-import { Link } from "@/components/ui/link"
-import { Menu, MenuContent, MenuItem } from "@/components/ui/menu"
+"use client";
+import {
+  ChevronDownIcon,
+  MagnifyingGlassIcon,
+  ShoppingBagIcon,
+} from "@heroicons/react/24/outline";
+import { Avatar } from "@/components/ui/avatar";
+import { Button } from "@/components/ui/button";
+import { Link } from "@/components/ui/link";
+import { Menu, MenuContent, MenuItem } from "@/components/ui/menu";
 import {
   Navbar,
   NavbarGap,
@@ -16,9 +20,9 @@ import {
   NavbarSpacer,
   NavbarStart,
   NavbarTrigger,
-} from "@/components/ui/navbar"
-import { Separator } from "@/components/ui/separator"
-// import { UserMenu } from "@/registry/blocks/navbar-03/user-menu"
+} from "@/components/ui/navbar";
+import { Separator } from "@/components/ui/separator";
+import { ThemeSwitcher } from "@/components/theme-switcher";
 
 const categories = [
   { id: 1, label: "Electronics", url: "#" },
@@ -31,7 +35,7 @@ const categories = [
   { id: 8, label: "Toys & Games", url: "#" },
   { id: 9, label: "Automotive", url: "#" },
   { id: 10, label: "Health & Wellness", url: "#" },
-]
+];
 
 export default function DashboardNavbar(props: NavbarProps) {
   return (
@@ -41,7 +45,7 @@ export default function DashboardNavbar(props: NavbarProps) {
           <Link
             className="flex items-center gap-x-2 font-medium"
             aria-label="Goto documentation of Navbar"
-            href="/docs/components/layouts/navbar"
+            href="/"
           >
             <Avatar
               isSquare
@@ -56,18 +60,21 @@ export default function DashboardNavbar(props: NavbarProps) {
         </NavbarStart>
         <NavbarGap />
         <NavbarSection>
-          <NavbarItem href="#" isCurrent>
-            Home
+          <NavbarItem href="/" isCurrent>
+            Overview
           </NavbarItem>
-          <NavbarItem href="#">Shop</NavbarItem>
-          <NavbarItem href="#">Offers</NavbarItem>
-          <NavbarItem href="#">Orders</NavbarItem>
+          <NavbarItem href="/projects">Projects</NavbarItem>
+          <NavbarItem href="/databases">Databases</NavbarItem>
+          <NavbarItem href="/apps">Apps</NavbarItem>
           <Menu>
             <NavbarItem>
               Categories
               <ChevronDownIcon className="col-start-3" />
             </NavbarItem>
-            <MenuContent className="min-w-(--trigger-width) sm:min-w-56" items={categories}>
+            <MenuContent
+              className="min-w-(--trigger-width) sm:min-w-56"
+              items={categories}
+            >
               {(item) => (
                 <MenuItem id={item.id} textValue={item.label} href={item.url}>
                   {item.label}
@@ -84,8 +91,8 @@ export default function DashboardNavbar(props: NavbarProps) {
           <Button intent="plain" size="sq-sm" aria-label="Your Bag">
             <ShoppingBagIcon />
           </Button>
+          <ThemeSwitcher />
           <Separator orientation="vertical" className="mr-3 ml-1 h-5" />
-          {/* <UserMenu /> */}
         </NavbarSection>
       </Navbar>
       <NavbarMobile>
@@ -97,9 +104,9 @@ export default function DashboardNavbar(props: NavbarProps) {
         <Button intent="plain" size="sq-sm" aria-label="Your Bag">
           <ShoppingBagIcon />
         </Button>
+        <ThemeSwitcher />
         <NavbarSeparator className="mr-2.5" />
-        {/* <UserMenu /> */}
       </NavbarMobile>
     </NavbarProvider>
-  )
+  );
 }

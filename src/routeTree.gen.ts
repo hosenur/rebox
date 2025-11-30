@@ -9,38 +9,161 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as AuthRouteImport } from './routes/auth'
+import { Route as ProjectsIndexRouteImport } from './routes/projects/index'
+import { Route as DatabasesIndexRouteImport } from './routes/databases/index'
+import { Route as AppsIndexRouteImport } from './routes/apps/index'
 import { Route as DashboardIndexRouteImport } from './routes/_dashboard/index'
+import { Route as DashboardNewRouteImport } from './routes/_dashboard/new'
+import { Route as ProjectsNewIndexRouteImport } from './routes/projects/new/index'
+import { Route as ProjectsNewImportRouteImport } from './routes/projects/new/import'
 
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProjectsIndexRoute = ProjectsIndexRouteImport.update({
+  id: '/projects/',
+  path: '/projects/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DatabasesIndexRoute = DatabasesIndexRouteImport.update({
+  id: '/databases/',
+  path: '/databases/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppsIndexRoute = AppsIndexRouteImport.update({
+  id: '/apps/',
+  path: '/apps/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const DashboardIndexRoute = DashboardIndexRouteImport.update({
   id: '/_dashboard/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DashboardNewRoute = DashboardNewRouteImport.update({
+  id: '/_dashboard/new',
+  path: '/new',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProjectsNewIndexRoute = ProjectsNewIndexRouteImport.update({
+  id: '/projects/new/',
+  path: '/projects/new/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProjectsNewImportRoute = ProjectsNewImportRouteImport.update({
+  id: '/projects/new/import',
+  path: '/projects/new/import',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
+  '/auth': typeof AuthRoute
+  '/new': typeof DashboardNewRoute
   '/': typeof DashboardIndexRoute
+  '/apps': typeof AppsIndexRoute
+  '/databases': typeof DatabasesIndexRoute
+  '/projects': typeof ProjectsIndexRoute
+  '/projects/new/import': typeof ProjectsNewImportRoute
+  '/projects/new': typeof ProjectsNewIndexRoute
 }
 export interface FileRoutesByTo {
+  '/auth': typeof AuthRoute
+  '/new': typeof DashboardNewRoute
   '/': typeof DashboardIndexRoute
+  '/apps': typeof AppsIndexRoute
+  '/databases': typeof DatabasesIndexRoute
+  '/projects': typeof ProjectsIndexRoute
+  '/projects/new/import': typeof ProjectsNewImportRoute
+  '/projects/new': typeof ProjectsNewIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
+  '/auth': typeof AuthRoute
+  '/_dashboard/new': typeof DashboardNewRoute
   '/_dashboard/': typeof DashboardIndexRoute
+  '/apps/': typeof AppsIndexRoute
+  '/databases/': typeof DatabasesIndexRoute
+  '/projects/': typeof ProjectsIndexRoute
+  '/projects/new/import': typeof ProjectsNewImportRoute
+  '/projects/new/': typeof ProjectsNewIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/auth'
+    | '/new'
+    | '/'
+    | '/apps'
+    | '/databases'
+    | '/projects'
+    | '/projects/new/import'
+    | '/projects/new'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/_dashboard/'
+  to:
+    | '/auth'
+    | '/new'
+    | '/'
+    | '/apps'
+    | '/databases'
+    | '/projects'
+    | '/projects/new/import'
+    | '/projects/new'
+  id:
+    | '__root__'
+    | '/auth'
+    | '/_dashboard/new'
+    | '/_dashboard/'
+    | '/apps/'
+    | '/databases/'
+    | '/projects/'
+    | '/projects/new/import'
+    | '/projects/new/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
+  AuthRoute: typeof AuthRoute
+  DashboardNewRoute: typeof DashboardNewRoute
   DashboardIndexRoute: typeof DashboardIndexRoute
+  AppsIndexRoute: typeof AppsIndexRoute
+  DatabasesIndexRoute: typeof DatabasesIndexRoute
+  ProjectsIndexRoute: typeof ProjectsIndexRoute
+  ProjectsNewImportRoute: typeof ProjectsNewImportRoute
+  ProjectsNewIndexRoute: typeof ProjectsNewIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/projects/': {
+      id: '/projects/'
+      path: '/projects'
+      fullPath: '/projects'
+      preLoaderRoute: typeof ProjectsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/databases/': {
+      id: '/databases/'
+      path: '/databases'
+      fullPath: '/databases'
+      preLoaderRoute: typeof DatabasesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/apps/': {
+      id: '/apps/'
+      path: '/apps'
+      fullPath: '/apps'
+      preLoaderRoute: typeof AppsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/_dashboard/': {
       id: '/_dashboard/'
       path: '/'
@@ -48,11 +171,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_dashboard/new': {
+      id: '/_dashboard/new'
+      path: '/new'
+      fullPath: '/new'
+      preLoaderRoute: typeof DashboardNewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/projects/new/': {
+      id: '/projects/new/'
+      path: '/projects/new'
+      fullPath: '/projects/new'
+      preLoaderRoute: typeof ProjectsNewIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/projects/new/import': {
+      id: '/projects/new/import'
+      path: '/projects/new/import'
+      fullPath: '/projects/new/import'
+      preLoaderRoute: typeof ProjectsNewImportRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
+  AuthRoute: AuthRoute,
+  DashboardNewRoute: DashboardNewRoute,
   DashboardIndexRoute: DashboardIndexRoute,
+  AppsIndexRoute: AppsIndexRoute,
+  DatabasesIndexRoute: DatabasesIndexRoute,
+  ProjectsIndexRoute: ProjectsIndexRoute,
+  ProjectsNewImportRoute: ProjectsNewImportRoute,
+  ProjectsNewIndexRoute: ProjectsNewIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

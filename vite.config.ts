@@ -17,6 +17,8 @@ export default defineConfig({
   ],
   nitro: {
     preset: "bun",
+    apiDir: "src/server",
+    serverDir: ".",
   },
   resolve: {
     alias: {

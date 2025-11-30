@@ -10,6 +10,7 @@ import {
     type ToOptions
 } from "@tanstack/react-router";
 import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
+import { NuqsAdapter } from "nuqs/adapters/tanstack-router";
 import { RouterProvider } from "react-aria-components";
 import "@/styles/app.css"
 declare module "react-aria-components" {
@@ -25,17 +26,19 @@ const RootLayout = () => {
     <RouterProvider
       navigate={(to, options) => router.navigate({ to, ...options })}
     >
-      <NavbarProvider>
-        <HeadContent />
-        <ThemeProvider defaultTheme="light" storageKey="vite-ui-theme">
-          <DashboardNavbar intent="inset" />
-          <NavbarInset>
-            <Outlet />
-          </NavbarInset>
-          <Toast richColors />
-        </ThemeProvider>
-        <TanStackRouterDevtools position="bottom-left" />
-      </NavbarProvider>
+      <NuqsAdapter>
+        <NavbarProvider>
+          <HeadContent />
+          <ThemeProvider defaultTheme="light" storageKey="vite-ui-theme">
+            <DashboardNavbar intent="inset" />
+            <NavbarInset>
+              <Outlet />
+            </NavbarInset>
+            <Toast richColors />
+          </ThemeProvider>
+          <TanStackRouterDevtools position="bottom-left" />
+        </NavbarProvider>
+      </NuqsAdapter>
     </RouterProvider>
   );
 };
