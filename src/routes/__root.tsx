@@ -1,18 +1,19 @@
-import DashboardNavbar from "@/components/dashboard/dashboard-navbar";
 import { ThemeProvider } from "@/components/theme-provider";
-import { NavbarInset, NavbarProvider } from "@/components/ui/navbar";
+import { NavbarProvider } from "@/components/ui/navbar";
 import { Toast } from "@/components/ui/toast";
 import {
-    createRootRoute,
-    HeadContent, Outlet,
-    useRouter,
-    type NavigateOptions,
-    type ToOptions
+  createRootRoute,
+  HeadContent,
+  Outlet,
+  useRouter,
+  type NavigateOptions,
+  type ToOptions,
 } from "@tanstack/react-router";
 import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
 import { NuqsAdapter } from "nuqs/adapters/tanstack-router";
 import { RouterProvider } from "react-aria-components";
-import "@/styles/app.css"
+import "@fontsource/geist-sans";
+import "@/styles/app.css";
 declare module "react-aria-components" {
   interface RouterConfig {
     href: ToOptions["to"];
@@ -30,10 +31,8 @@ const RootLayout = () => {
         <NavbarProvider>
           <HeadContent />
           <ThemeProvider defaultTheme="light" storageKey="vite-ui-theme">
-            <DashboardNavbar intent="inset" />
-            <NavbarInset>
-              <Outlet />
-            </NavbarInset>
+            <Outlet />
+
             <Toast richColors />
           </ThemeProvider>
           <TanStackRouterDevtools position="bottom-left" />

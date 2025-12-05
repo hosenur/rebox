@@ -19,15 +19,16 @@ datasource db {
 }
 
 model User {
-  id            String    @id
+  id            String       @id
   name          String
   email         String
-  emailVerified Boolean   @default(false)
+  emailVerified Boolean      @default(false)
   image         String?
-  createdAt     DateTime  @default(now())
-  updatedAt     DateTime  @updatedAt
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
   sessions      Session[]
   accounts      Account[]
+  projects      Project[]
 
   @@unique([email])
   @@map("user")
@@ -79,4 +80,63 @@ model Verification {
 
   @@index([identifier])
   @@map("verification")
+}
+
+model Project {
+  id          String       @id @default(cuid())
+  name        String
+  repo        String
+  owner       String
+  path        String
+  userId      String
+  user        User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  deployments Deployment[]
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+
+  @@index([userId])
+  @@map("project")
+}
+
+model Deployment {
+  id            String      @id @default(cuid())
+  projectId     String
+  project       Project     @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  status        String      @default("pending")
+  buildJobId    String?
+  deployJobId   String?
+  imageName     String?
+  containerName String?
+  port          Int?
+  buildLogs     BuildLog[]
+  deployLogs    DeployLog[]
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+
+  @@index([projectId])
+  @@map("deployment")
+}
+
+model BuildLog {
+  id           String     @id @default(cuid())
+  deploymentId String
+  deployment   Deployment @relation(fields: [deploymentId], references: [id], onDelete: Cascade)
+  line         Int
+  message      String
+  createdAt    DateTime   @default(now())
+
+  @@index([deploymentId])
+  @@map("build_log")
+}
+
+model DeployLog {
+  id           String     @id @default(cuid())
+  deploymentId String
+  deployment   Deployment @relation(fields: [deploymentId], references: [id], onDelete: Cascade)
+  line         Int
+  message      String
+  createdAt    DateTime   @default(now())
+
+  @@index([deploymentId])
+  @@map("deploy_log")
 }

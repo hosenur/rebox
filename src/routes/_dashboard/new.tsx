@@ -5,5 +5,5 @@ export const Route = createFileRoute('/_dashboard/new')({
 })
 
 function RouteComponent() {
-  return <div>Hello "/_dashboard/new"!</div>
+  return <div className="bg-bg p-4 text-fg">Hello "/_dashboard/new"! This should have bg-bg background.</div>
 }
